@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-const Blog = ({ blg }) => {
+import bookmark from '../../assets/images/bookmark.svg'
+const Blog = ({ blg,addToBookmark }) => {
   const {
     title,
     cover,
@@ -29,8 +30,11 @@ const Blog = ({ blg }) => {
           </div>
         </div>
         {/* left */}
-        <div>
+        <div className="flex flex-row items-center gap-4">
           <span>{reading_time} min read</span>
+          <button onClick={()=>addToBookmark(blg)}>
+            <img src={bookmark} alt="" />
+          </button>
         </div>
       </div>
       <h2 className="text-4xl font-bold mb-4">{title}</h2>
@@ -46,5 +50,6 @@ const Blog = ({ blg }) => {
 };
 Blog.propTypes = {
   blg: PropTypes.object.isRequired,
+  addToBookmark:PropTypes.func
 };
 export default Blog;
